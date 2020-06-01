@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;">
+	<div class="card-body">
+		<h5 class="card-title">{{articulo.nombre}}</h5>
+		<h6 class="card-subtitle mb-2 text-muted">{{articulo.descripcion}}</h6>
+		<p class="card-text">{{articulo.stock|currency:'STOCK: '}} </p>
+		<p class="card-text">{{articulo.precio|currency:'ars$ '}}</p>
+		<p class="card-text">{{articulo.precioMayorista|currency:'ars$ '}}</p>
+	</div>
+</div>

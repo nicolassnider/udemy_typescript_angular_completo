@@ -1,0 +1,20 @@
+<h1>h1 H1</h1>
+<h2>h2 H2</h2>
+<h3>h3 H#</h3>
+<p>titulos works!</p>
+{{nombre}}
+<p>hola soy {{alumno.nombre}}</p>
+<!-- <img [src]="imagen" alt=""> -->
+<!--<input type="text" [(ngModel)]="inputNuevo">
+<p>{{inputNuevo}}</p>-->
+<label for="">
+  <input type="text" (ngModelChange)="eventoNgModelChange()" [(ngModel)]="correo">
+</label>
+<label for="">password
+  <input type="text" (dblclick)="eventoDblClick()" [(ngModel)]="password">
+</label>
+<button (click)="eventoClick()" (dblclick)="eventoDblClick()">iniciar</button>
+
+<input type="text" (input)="escribir($event) "name="" id="">
+
+<input type="text" (focus)="focus($event)" name="" id="">Colorear fondo

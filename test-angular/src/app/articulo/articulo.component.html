@@ -1,0 +1,5 @@
+<div class="articulos" *ngFor="let articuloItem of articulos">
+  <h4><a (click)="pasarParametro(articuloItem)">{{articuloItem.articulo.nombre}}</a></h4>
+  <p>{{articuloItem.descripcion}}</p>
+  <h5>{{articuloItem.precio|currency:'AR$'}}</h5>
+</div>

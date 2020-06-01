@@ -1,0 +1,33 @@
+<div class="container">
+  <form action="">
+    <div class="form-group">
+      <label for="">Nombre</label>
+      <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre..." aria-describedby="helpId"
+        [(ngModel)]="alumno.nombre">
+    </div>
+    <div class="form-group">
+      <label for="">Apellido</label>
+      <input type="text" name="apellido" id="" class="form-control" placeholder="Apellido..." aria-describedby="helpId"
+        [(ngModel)]="alumno.apellido">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="">Excelencia</label>
+      </div>
+      <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="alumno.excelencia"
+        [ngModelOptions]="{standalone: true}">
+        <option selected value="false">NO</option>
+        <option value="true">SI</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" (click)="agregar()">Agregar</button>
+  </form>
+
+  <div class="card" *ngFor="let itemAlumno of listadoAlumnos">
+    <div class="card-body">
+      <span [ngClass]="{'excelencia': itemAlumno.excelencia}">alumno: {{itemAlumno.nombre}}
+        {{itemAlumno.apellido}}</span>
+
+    </div>
+  </div>
+</div>
