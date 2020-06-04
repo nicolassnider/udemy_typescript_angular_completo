@@ -1,27 +1,11 @@
 <div class="container">
-  <div class="articulo">
-    <h4>Encabezado</h4>
-    <p>Descripcion</p>
-    <p>Fecha</p>
-  </div>
-  <div class="articulo">
-    <h4>Encabezado</h4>
-    <p>Descripcion</p>
-    <p>Fecha</p>
-  </div>
-  <div class="articulo">
-    <h4>Encabezado</h4>
-    <p>Descripcion</p>
-    <p>Fecha</p>
-  </div>
-  <div class="articulo">
-    <h4>Encabezado</h4>
-    <p>Descripcion</p>
-    <p>Fecha</p>
-  </div>
-  <div class="articulo">
-    <h4>Encabezado</h4>
-    <p>Descripcion</p>
-    <p>Fecha</p>
+  <div class="articulo" *ngFor="let articulo of articulos">
+    <h4 (click)="irADetalle(articulo)">{{articulo.id}}</h4>
+    <div>
+      <h1>{{articulo.title}}</h1>
+      <p>{{articulo.body}}</p>
+      <p>{{articulo.id}}</p>
+    </div>
+
   </div>
 </div>
