@@ -32,4 +32,10 @@ export class HomeComponent implements OnInit {
     this.Ruta.navigateByUrl('/articulo-detalle')
   }
 
+  eliminar(id:number){
+    this.ArticuloInyectado.eliminarArticulo(id).subscribe((datos)=>{
+      console.log(datos);
+    })
+  }
+
 }

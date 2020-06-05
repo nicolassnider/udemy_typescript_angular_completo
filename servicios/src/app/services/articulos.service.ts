@@ -29,4 +29,8 @@ export class ArticulosService {
     return this.http.get<User[]>(`${this.ruta}users`)
   }
 
+  eliminarArticulo(id:number) : Observable<any>{
+    return this.http.delete<any>(`${this.ruta}posts/${id}`)
+  }
+
 }
