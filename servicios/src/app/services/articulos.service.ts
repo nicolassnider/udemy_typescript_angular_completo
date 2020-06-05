@@ -33,4 +33,8 @@ export class ArticulosService {
     return this.http.delete<any>(`${this.ruta}posts/${id}`)
   }
 
+  updateArticulo(articulo:Articulo):Observable<Articulo>{
+    return this.http.put<Articulo>(`${this.ruta}posts/'${articulo.id}`, articulo)
+  }
+
 }

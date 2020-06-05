@@ -38,4 +38,12 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  actualizar(articulo:Articulo){
+    articulo.title='otro ticulo';
+    articulo.body='otro body';
+    this.ArticuloInyectado.updateArticulo(articulo).subscribe((articuloRecibido)=>{
+      console.log(articuloRecibido);
+    })
+  }
+
 }
