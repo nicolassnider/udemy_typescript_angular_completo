@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Articulo } from '../models/Articulo';
 import { UsuariosService } from '../services/usuarios.service';
 import { ArticulosService } from '../services/articulos.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,38 +12,35 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   articulos: Array<Articulo> = new Array<Articulo>();
-  constructor(public UsuarioInyectado: UsuariosService, public ArticuloInyectado:ArticulosService, public Ruta:Router ) { }
+  constructor(public UsuarioInyectado: UsuariosService, public ArticuloInyectado: ArticulosService, public Ruta: Router,public RutaActiva:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.ArticuloInyectado.leerNoticias().subscribe((articulosDesdeApi)=>{
+    this.ArticuloInyectado.leerNoticias().subscribe((articulosDesdeApi) => {
       this.articulos = articulosDesdeApi;
     });
-    let articuloEnviar: Articulo=new Articulo();
-    articuloEnviar.body='Esto es el artículo enviado';
-    articuloEnviar.title='Título';
-    articuloEnviar.userId=123123;
-    this.ArticuloInyectado.guardarArticulo(articuloEnviar).subscribe((articuloCreado)=>{
+    let articuloEnviar: Articulo = new Articulo();
+    articuloEnviar.body = 'Esto es el artículo enviado';
+    articuloEnviar.title = 'Título';
+    articuloEnviar.userId = 123123;
+    this.ArticuloInyectado.guardarArticulo(articuloEnviar).subscribe((articuloCreado) => {
       this.articulos.push(articuloCreado)
     })
   }
 
-  irADetalle(articulo:Articulo){
-    this.ArticuloInyectado.articulo=articulo;
+  irADetalle(articulo: Articulo) {
+    this.ArticuloInyectado.articulo = articulo;
     this.Ruta.navigateByUrl('/articulo-detalle')
   }
 
-  eliminar(id:number){
-    this.ArticuloInyectado.eliminarArticulo(id).subscribe((datos)=>{
+  eliminar(id: number) {
+    this.ArticuloInyectado.eliminarArticulo(id).subscribe((datos) => {
       console.log(datos);
     })
   }
 
-  actualizar(articulo:Articulo){
-    articulo.title='otro ticulo';
-    articulo.body='otro body';
-    this.ArticuloInyectado.updateArticulo(articulo).subscribe((articuloRecibido)=>{
-      console.log(articuloRecibido);
-    })
+  actualizar(articulo: Articulo) {
+    this.ArticuloInyectado.articulo = articulo
+    this.Ruta.navigateByUrl('/agregar-articulo/false')
   }
 
 }

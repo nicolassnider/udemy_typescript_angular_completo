@@ -1,0 +1,36 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="guardarCliente()">Guardar cliente</button>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="guardarProductos()">Guardar producto</button>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="eliminarClientes()">Eliminar clientes</button>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="eliminarProductos()">Eliminar productos</button>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="eliminarTodos()">Eliminar todo</button>
+    </div>
+    <div class="col-2">
+
+    </div>
+  </div>
+
+
+  <div class="card" *ngFor="let clienteItem of clientesLocales()">
+    <div class="card-body">
+      <p>{{clienteItem.nombre}}</p>
+    </div>
+  </div>
+  <br>
+  <div class="card" *ngFor="let productoItem of productosLocales()">
+    <div class="card-body">
+      <p>{{productoItem.nombre}}</p>
+    </div>
+  </div>
+</div>
