@@ -1,5 +1,6 @@
 import { PedidoDetalle } from './PedidoDetalle';
 import { Productos } from './Productos';
+import { of } from 'rxjs';
 
 export class Pedido {
   id: number;
@@ -31,8 +32,15 @@ export class Pedido {
       this.pedidoDetalle[posicion].total = this.pedidoDetalle[posicion].cantidad * this.pedidoDetalle[posicion].precio;
     }
     else { this.pedidoDetalle.push(pedidoDetalle); }
-
+    this.actualizarTotal();
     console.log(this.pedidoDetalle);
 
+  }
+
+  private actualizarTotal(){
+    this.total=0;
+    for (let producto of this.pedidoDetalle) {
+      this.total=this.total+producto.total;
+    }
   }
 }

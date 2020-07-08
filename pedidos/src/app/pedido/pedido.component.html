@@ -1,1 +1,28 @@
-<p>pedido works!</p>
+<div class="container">
+  <div class="cliente">
+    <h5>Cliente</h5>
+    <h6>Total:</h6>
+  </div>
+  <div class="detalle">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Producto Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let productoItem of this.pedidosService.pedido.pedidoDetalle">
+          <th scope="row">{{productoItem.productoId}}</th>
+          <td>{{productoItem.nombreProducto}}</td>
+          <td>{{productoItem.cantidad}}</td>
+          <td>{{productoItem.precio}}</td>
+          <td>{{productoItem.total}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
