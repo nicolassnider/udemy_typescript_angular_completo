@@ -1,7 +1,7 @@
 <div class="container">
   <div class="cliente">
     <h5>{{this.pedidosService.pedido.nombreCliente}}</h5>
-    <h6>Total: {{this.pedidosService.pedido.total}}</h6>
+    <h6>Total: {{this.pedidosService.pedido.total | currency:'AR$'}}</h6>
   </div>
   <div class="detalle">
     <table class="table">
@@ -12,17 +12,20 @@
           <th scope="col">Cantidad</th>
           <th scope="col">Precio</th>
           <th scope="col">Total</th>
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let productoItem of this.pedidosService.pedido.pedidoDetalle">
+        <tr *ngFor="let productoItem of this.pedidosService.pedido.pedidoDetalle; let posicion=index">
           <th scope="row">{{productoItem.productoId}}</th>
           <td>{{productoItem.nombreProducto}}</td>
-          <td>{{productoItem.cantidad}}</td>
+          <td><input (input)="calcularTotal(posicion)" [(ngModel)]=productoItem.cantidad type="text"></td>
           <td>{{productoItem.precio}}</td>
           <td>{{productoItem.total}}</td>
+          <td><button class="btn btn-danger" (click)=eliminar(posicion)>X</button></td>
         </tr>
       </tbody>
     </table>
   </div>
+  <div><button class="btn btn-primary" (click)=guardar()>Guardar</button></div>
 </div>

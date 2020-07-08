@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 mt-1" *ngFor="let listadoPedidoItem of listadoPedidos">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{listadoPedidoItem.nombreCliente}}</h5>
+          <h6 class="card-subtitle">{{listadoPedidoItem.total | currency:'AR$'}}</h6>
+          <p class="card-text">Cantidad de Productos: {{listadoPedidoItem.pedidoDetalle.length}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

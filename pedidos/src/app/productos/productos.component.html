@@ -14,8 +14,7 @@
           <h6 class="card-subtitle">{{productoItem.id}}</h6>
           <p class="card-text">{{productoItem.descripcion}}</p>
           <p class="card-link">{{productoItem.precioc | currency:'$'}}</p>
-          <a (click)="agregar(productoItem)" class="card-link">Agregar</a>
-          <a href="#" class="card-link">Info</a>
+          <button (click)="agregar(productoItem)" class="btn btn-primary">Pedir</button>
         </div>
       </div>
     </div>

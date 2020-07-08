@@ -13,6 +13,7 @@ import { ClientesService } from './services/clientes.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AgregarProductosComponent } from './agregar-productos/agregar-productos.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PedidoComponent } from './pedido/pedido.component';
     HomeComponent,
     AgregarClientesComponent,
     AgregarProductosComponent,
-    PedidoComponent
+    PedidoComponent,
+    ListadoPedidosComponent
   ],
   imports: [
     BrowserModule,
