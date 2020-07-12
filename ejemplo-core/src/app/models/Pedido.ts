@@ -9,5 +9,6 @@ export class Pedido {
     this.cliente = this.cliente;
     this.direccion = this.direccion;
     this.pedidoDetalle = new Array<PedidoDetalle>();
+    //asd
   }
 }
