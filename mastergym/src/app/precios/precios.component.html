@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-8">
+      <h4>Precios</h4>
+      <ul>
+        <li *ngFor="let precioItem of precios">
+          {{precioItem.nombre}}
+        </li>
+
+      </ul>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quam ligula, auctor quis vehicula sit amet,
+        facilisis eu risus.
+        Nulla sed nulla non enim congue scelerisque. Integer tristique euismod felis, non cursus metus mollis eu.
+        Fusce at nulla laoreet, dignissim dui rhoncus, consectetur ipsum. Cras felis lorem, suscipit sed fringilla in,
+        tempus sit amet felis.
+        Pellentesque egestas commodo enim, ac hendrerit nunc consequat vel. Mauris pretium erat a est suscipit semper.
+        Pellentesque scelerisque massa a lectus molestie, vel faucibus mauris interdum. Suspendisse vitae mi quis urna
+        lobortis porta.
+        Aenean at nunc tristique, tempus orci id, egestas eros. Nulla facilisi.
+        Donec volutpat, mauris ut interdum vehicula, tellus felis placerat nisi, id pellentesque metus est id nisi.
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <h4>Editar</h4>
+      <form [formGroup]="formularioPrecio" action="">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input formControlName="nombre" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="costo">Costo</label>
+          <input formControlName="costo" class="form-control" type="number">
+        </div>
+        <div class="form-group">
+          <label for="duracion">Duración</label>
+          <input formControlName="duracion" class="form-control" type="number">
+        </div>
+        <div class="form-group">
+          <label for="tipoDuracion">Tipo duración</label>
+          <select formControlName="tipoDuracion" class="form-control" name="" id="">
+            <option value="1">Diaria</option>
+            <option value="2">Semanal</option>
+            <option value="3">Quincenal</option>
+            <option value="4">Mensual</option>
+            <option value="5">Anual</option>
+          </select>
+        </div>
+        <button (click)="agregar()" [disabled]="formularioPrecio.invalid" class="btn btn-primary">Agregar</button>
+        <button (click)="agregar()" [disabled]="formularioPrecio.invalid" class="btn btn-warning">Editar</button>
+      </form>
+    </div>
+  </div>
+</div>

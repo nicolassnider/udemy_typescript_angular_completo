@@ -88,7 +88,7 @@
     <div class="row">
       <div class="col-sm-3">
         <button *ngIf="!esEditable" type="submit" (click)="agregar()" [disabled]="formularioCliente.invalid && !imgUrl" class="btn btn-primary">Agregar</button>
-        <button *ngIf="esEditable" type="submit" (click)="agregar()" [disabled]="formularioCliente.invalid && !imgUrl" class="btn btn-primary">Editar</button>
+        <button *ngIf="esEditable"  type="submit" (click)="editar()"  [disabled]="formularioCliente.invalid && !imgUrl" class="btn btn-primary">Editar</button>
       </div>
     </div>
 

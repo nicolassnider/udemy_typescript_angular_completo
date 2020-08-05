@@ -21,6 +21,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
 import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { MensajesService } from './services/mensajes.service';
+import { PreciosComponent } from './precios/precios.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     LoginComponent,
     EncabezadoComponent,
     ListadoClientesComponent,
-    AgregarClienteComponent
+    AgregarClienteComponent,
+    PreciosComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
   providers: [
     AngularFireAuth,
     AngularFirestore,
+    MensajesService,
   ],
   bootstrap: [AppComponent]
 })

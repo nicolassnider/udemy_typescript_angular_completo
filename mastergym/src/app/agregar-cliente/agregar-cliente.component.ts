@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { MensajesService } from '../services/mensajes.service';
 
 @Component({
   selector: 'app-agregar-cliente',
@@ -18,7 +19,8 @@ export class AgregarClienteComponent implements OnInit {
     private fb: FormBuilder,
     private storage: AngularFireStorage,
     private db: AngularFirestore,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private mensajes: MensajesService) { }
   imgUrl: string = '';
 
   ngOnInit(): void {
@@ -71,22 +73,28 @@ export class AgregarClienteComponent implements OnInit {
   agregar() {
     this.formularioCliente.value.imgUrl = this.imgUrl
     this.formularioCliente.value.fechaNac = new Date(this.formularioCliente.value.fechaNac);
-    this.db.collection('clientes').add(this.formularioCliente.value).then((termino) => {
-      console.log('Registro Creado');//TODO: liberar boton
-    })
+    this.db.collection('clientes').add(this.formularioCliente.value)
+      .then((termino) => {
+        console.log('Edición');//TODO: liberar boton
+        this.mensajes.mensajeOk('Registrar', 'Cliente agregado con éxito');
+      })
+      .catch(() => {
+        this.mensajes.mensajeError('Registrar', 'Ocurrió un error');
+      });
   }
 
   editar() {
     this.formularioCliente.value.imgUrl = this.imgUrl;
     this.formularioCliente.value.fechaNac = new Date(this.formularioCliente.value.fechaNac);
     this.formularioCliente.value;
-    this.db.doc('cliente/' + this.id).update(this.formularioCliente.value)
-      .then((resultado)=>{
-        console.log(resultado);
+    this.db.doc('clientes/' + this.id).update(this.formularioCliente.value)
+      .then((termino) => {
+        console.log('Edición');//TODO: liberar boton
+        this.mensajes.mensajeAdvertencia('Edición','Usuario editado con éxito');
       })
-      .catch(()=>{
-        console.log('error');
-      })
+      .catch(() => {
+        this.mensajes.mensajeError('Edición','Ocurrió un error');
+      });
   }
 
   subirImgUrl(evento) {
