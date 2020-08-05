@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       this.afAuth.auth.signInWithEmailAndPassword(this.formularioLogin.value.email, this.formularioLogin.value.password)
         .then((usuario) => {
           this.spinner.hide();
-          console.log('usuario: ', usuario);
         })
         .catch((error) => {
           this.validForm = false;
