@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MensajesService } from '../services/mensajes.service';
+import { Precio } from '../models/precio';
 
 @Component({
   selector: 'app-precios',
@@ -10,8 +11,10 @@ import { MensajesService } from '../services/mensajes.service';
 })
 export class PreciosComponent implements OnInit {
 
+  id:string='';
+  esEditar:boolean=false;
   formularioPrecio: FormGroup;
-  precios: any[] = Array<any>();
+  precios: Precio[] = Array<Precio>();
   constructor(
     private fb: FormBuilder,
     private db: AngularFirestore,
@@ -34,9 +37,15 @@ export class PreciosComponent implements OnInit {
         ])],
       }
     )
+
+    this.mostrarPrecios();
+  }
+
+  mostrarPrecios(){
     this.db.collection('precios').get().subscribe((resultado)=>{
+      this.precios.length=0;
       resultado.docs.forEach((dato)=>{
-        let precio = dato.data();
+        let precio = dato.data() as Precio;
         precio.id = dato.id;
         precio.ref = dato.ref;
         this.precios.push(precio)
@@ -47,10 +56,34 @@ export class PreciosComponent implements OnInit {
   agregar(){
     this.db.collection('precios').add(this.formularioPrecio.value)
     .then(()=>{
+      this.mostrarPrecios();
       this.mensajes.mensajeOk('Registrar', 'Precio agregado con éxito');
     })
     .catch(()=>{
       this.mensajes.mensajeError('Registrar', 'Ocurrió un error');
+    })
+  }
+
+  editarPrecio(precio: Precio){
+    this.formularioPrecio.setValue({
+      nombre:precio.nombre,
+      costo:precio.costo,
+      duracion:precio.duracion,
+      tipoDuracion:precio.tipoDuracion,
+    })
+    this.id=precio.id;
+    this.esEditar=true;
+  }
+
+  editar(){
+    this.db.doc('precios/'+ this.id).update(this.formularioPrecio.value)
+    .then(()=>{
+      this.esEditar=false;
+      this.mostrarPrecios();
+      this.mensajes.mensajeAdvertencia('Edición','Editado correctamente');
+    })
+    .catch(()=>{
+      this.mensajes.mensajeError('Edición', 'ocurrió un error');
     })
   }
 
