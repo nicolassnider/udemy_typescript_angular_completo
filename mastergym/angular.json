@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mastergym"
+    }
+  },
+  "defaultProject": "mastergym",
+  "cli": {
+    "analytics": "11ebf0ef-10f1-4108-a46e-cbfa710bdfd0"
+  }
 }

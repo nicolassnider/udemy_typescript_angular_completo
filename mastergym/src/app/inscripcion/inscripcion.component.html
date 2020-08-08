@@ -1,10 +1,32 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <app-seleccionar-cliente></app-seleccionar-cliente>
-    </div>
-    <div class="col-sm-6">
-      zxcv
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-sm-6">
+			<app-seleccionar-cliente [nombre]="clienteSeleccionado.nombre" (seleccionoCliente)="asignarCliente($event)"
+				(canceloCliente)="eliminarCliente()">
+			</app-seleccionar-cliente>
+
+			<div class="form-group">
+				<label for="precio">Precio</label>
+				<select (change)="seleccionarPrecio($event.target.value)" class="form-control required" name="precio"
+					id="precio">
+					<option [value]="null">Seleccione...</option>
+					<option *ngFor="let itemPrecio of precios" [value]="itemPrecio.id">{{itemPrecio.nombre}}</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="fechaInicio">Fecha de Inicio</label>
+				<input class="form-control" [value]="inscripcion.fecha | date" type="text" disabled>
+			</div>
+			<div class="form-group">
+				<label for="fechaFinal">Fecha de Finalización</label>
+				<input class="form-control" [value]="inscripcion.fechaFinal | date" type="text" disabled>
+			</div>
+
+			<button class="btn btn-primary" (click)="guardar()">Guardar</button>
+		</div>
+		<div class="col-sm-6">
+
+		</div>
+	</div>
 </div>

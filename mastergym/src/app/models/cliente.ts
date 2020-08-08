@@ -10,6 +10,7 @@ export class Cliente{
   telefono:string;
   dni:string;
   ref:DocumentReference;
+  visible:boolean;
 
   constructor()
   {
